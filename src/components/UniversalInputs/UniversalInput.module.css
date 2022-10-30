@@ -1,0 +1,23 @@
+
+
+.container {
+padding: 10px;
+}
+
+.inputTitle {
+    color: #61dafb;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.input{
+    margin-left: 15px;
+    min-height: 20px;
+    border: 2px solid #61dafb;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.errorInput {
+    background-color: #e87070;
+}

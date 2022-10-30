@@ -1,0 +1,25 @@
+.button {
+    margin: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 24px;
+    gap: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    background-color: #61dafb;
+
+}
+
+.button:hover {
+    background-color: #2cbbe5;
+}
+
+.button:active {
+    background-color: #025a72;
+}

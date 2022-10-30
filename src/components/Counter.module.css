@@ -1,0 +1,31 @@
+.container{
+    border: 2px solid #61dafb;
+    border-radius: 5px;
+}
+
+.wrapper {
+    margin: 15px;
+    border: 2px solid #61dafb;
+    border-radius: 5px;
+}
+
+.default {
+    margin: 10px auto;
+    width: 300px;
+    font-size: 5rem;
+    background-color: #61dafb;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+.buttonContainer{
+    margin: 10px auto;
+    width: 300px;
+    border: 2px solid #61dafb;
+    border-radius: 5px;
+}
+
