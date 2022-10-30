@@ -8,6 +8,7 @@ type Propstype = {
   value:number
 }
 
+
 export const UniversalInput = (props: Propstype) => {
 
   const inputCallback = (e: ChangeEvent<HTMLInputElement>) => {
