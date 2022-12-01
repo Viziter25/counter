@@ -3,63 +3,74 @@ import {UniversalButtons} from './UniversalButton/UniversalButtons';
 import s from './Counter.module.css';
 import {CounterItem} from './CounterItem/CounterItem';
 import {UniversalInput} from './UniversalInputs/UniversalInput';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppRootStateType} from './state/store';
+import {changeStartValueAC} from './state/startValue-reducer';
+import {changeMaxValueAC} from './state/maxValue-reducer';
+import {changeCounterAC, resetCounterAC} from './state/counter-reducer';
 
 
 export const Counter = () => {
 
+  const count = useSelector<AppRootStateType, number>(state => state.count)
+  const startValue = useSelector<AppRootStateType, number>(state => state.startValue)
+  const maxValue = useSelector<AppRootStateType, number>(state => state.maxValue)
 
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch()
 
-  let [startValue, setStartValue] = useState(0)
-  let [maxValue, setEnd] = useState(0)
+
 
   const [settings, setSettings] = useState(false)
 
-  const getDataLS = () => {
-    // const countValue = localStorage.getItem('countValue');
-    const startValue = localStorage.getItem('startValue');
-    const maxValue = localStorage.getItem('maxValue');
+  // const getDataLS = () => {
+  //   // const countValue = localStorage.getItem('countValue');
+  //   const startValue = localStorage.getItem('startValue');
+  //   const maxValue = localStorage.getItem('maxValue');
+  //
+  //   if (startValue && maxValue) {
+  //     dispatch(resetCounterAC(JSON.parse(startValue)))
+  //     dispatch(changeStartValueAC(JSON.parse(startValue)))
+  //     dispatch(changeMaxValueAC(JSON.parse(maxValue)))
+  //   }
+  // }
+  //
+  // useEffect(() => {
+  //   getDataLS();
+  // }, [])
 
-    if (startValue && maxValue) {
-      setCount(JSON.parse(startValue));
-      setStartValue(JSON.parse(startValue));
-      setEnd(JSON.parse(maxValue));
-    }
-  }
 
-  useEffect(() => {
-    getDataLS();
-  }, [])
 
   const incrHandler = () => {
-    setCount(+count + 1)
+    dispatch(changeCounterAC())
   }
 
   const resetHandler = () => {
-    setCount(+startValue)
+    dispatch(resetCounterAC(+startValue))
   }
 
   let onChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setStartValue(+e.currentTarget.value)
+    dispatch(changeStartValueAC(+e.currentTarget.value))
   }
   let onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-      setEnd(+e.currentTarget.value)
+    dispatch(changeMaxValueAC(+e.currentTarget.value))
   }
 
 
   const onClickShowHandler = () => {
-    localStorage.setItem('startValue', JSON.stringify(startValue))
-    localStorage.setItem('maxValue', JSON.stringify(maxValue))
-    localStorage.setItem('countValue', JSON.stringify(count))
-
-    let valueAsString = localStorage.getItem('startValue')
-
-    if (valueAsString) {
-      let newValue = JSON.parse(valueAsString)
-      setCount(newValue)
-    }
+    // localStorage.setItem('startValue', JSON.stringify(startValue))
+    // localStorage.setItem('maxValue', JSON.stringify(maxValue))
+    // localStorage.setItem('countValue', JSON.stringify(count))
+    //
+    // let valueAsString = localStorage.getItem('startValue')
+    //
+    // if (valueAsString) {
+    //   let newValue = JSON.parse(valueAsString)
+    //   dispatch(resetCounterAC(+newValue))
+    // }
+    dispatch(resetCounterAC(startValue))
     setSettings(!settings)
   }
+
 
 
   const disabledInr = count >= maxValue
