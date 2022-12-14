@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {UniversalButtons} from './UniversalButton/UniversalButtons';
 import s from './Counter.module.css';
 import {CounterItem} from './CounterItem/CounterItem';
@@ -18,25 +18,7 @@ export const Counter = () => {
 
   const dispatch = useDispatch()
 
-
-
   const [settings, setSettings] = useState(false)
-
-  // const getDataLS = () => {
-  //   // const countValue = localStorage.getItem('countValue');
-  //   const startValue = localStorage.getItem('startValue');
-  //   const maxValue = localStorage.getItem('maxValue');
-  //
-  //   if (startValue && maxValue) {
-  //     dispatch(resetCounterAC(JSON.parse(startValue)))
-  //     dispatch(changeStartValueAC(JSON.parse(startValue)))
-  //     dispatch(changeMaxValueAC(JSON.parse(maxValue)))
-  //   }
-  // }
-  //
-  // useEffect(() => {
-  //   getDataLS();
-  // }, [])
 
 
 
@@ -57,16 +39,6 @@ export const Counter = () => {
 
 
   const onClickShowHandler = () => {
-    // localStorage.setItem('startValue', JSON.stringify(startValue))
-    // localStorage.setItem('maxValue', JSON.stringify(maxValue))
-    // localStorage.setItem('countValue', JSON.stringify(count))
-    //
-    // let valueAsString = localStorage.getItem('startValue')
-    //
-    // if (valueAsString) {
-    //   let newValue = JSON.parse(valueAsString)
-    //   dispatch(resetCounterAC(+newValue))
-    // }
     dispatch(resetCounterAC(startValue))
     setSettings(!settings)
   }
